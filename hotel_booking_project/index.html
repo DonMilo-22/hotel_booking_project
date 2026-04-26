@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itzan' Kanak Inc. | Único. Elegante. Tuyo.</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">Itzan' Kanak <span class="gold">Inc.</span></div>
+        <nav>
+            <a href="#habitaciones">Habitaciones</a>
+            <a href="admin.html" class="admin-link">Panel Admin</a>
+        </nav>
+    </header>
+
+    <section class="hero" style="background-image: url('assets/imagen portada.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Descubre el verdadero <span class="gold">lujo</span>.</h1>
+            <p>Reserva tu estadía de ensueño hoy mismo.</p>
+            <a href="#habitaciones" class="cta-button">Ver Habitaciones</a>
+        </div>
+    </section>
+
+    <section id="habitaciones" class="rooms-section">
+        <h2>Nuestras <span class="gold">Habitaciones</span></h2>
+        <div class="rooms-grid" id="rooms-container">
+            <!-- Habitaciones cargadas desde JS -->
+        </div>
+    </section>
+
+    <!-- Modal Detalles de Habitación -->
+    <div id="room-details-modal" class="modal">
+        <div class="modal-content details-content" style="max-width: 900px; padding: 0; display: flex; flex-wrap: wrap; overflow: hidden;">
+            <span class="close-details-btn close-btn" style="z-index: 10; color: #fff; background: rgba(0,0,0,0.5); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; top: 10px; right: 10px;">&times;</span>
+            <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column;">
+                <img id="main-detail-img" src="" alt="Main" style="width: 100%; height: 400px; object-fit: cover;">
+                <div class="thumbnails" id="thumbnails-container" style="display: flex; overflow-x: auto; padding: 10px; background: #e2e8f0;"></div>
+            </div>
+            <div style="flex: 1; min-width: 300px; padding: 40px;">
+                <h2 id="detail-room-name" style="margin-bottom: 20px;"></h2>
+                <div style="margin-bottom: 20px;">
+                    <span id="detail-room-price" class="room-price" style="font-size: 32px;"></span>
+                    <span id="detail-room-original-price" style="text-decoration: line-through; color: #ef4444; font-size: 18px; margin-left: 10px; display: none;"></span>
+                </div>
+                <p id="detail-room-desc" style="margin-bottom: 30px; color: #475569; line-height: 1.6;"></p>
+                <div style="margin-bottom: 30px; display: flex; gap: 15px; color: #475569;">
+                    <span id="detail-available" style="padding: 5px 12px; background: rgba(0,0,0,0.05); border-radius: 5px;"></span>
+                    <span id="detail-capacity" style="padding: 5px 12px; background: rgba(0,0,0,0.05); border-radius: 5px;"></span>
+                </div>
+                <button id="detail-book-btn" class="cta-button" style="width: 100%;">Proceder a Reserva</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Reserva -->
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 style="margin-bottom: 20px;">Reservar <span id="modal-room-name" class="gold"></span></h2>
+            <form id="booking-form">
+                <input type="hidden" id="room-id">
+                <div class="input-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" id="client-name" required>
+                </div>
+                <div class="input-group">
+                    <label>Fecha de Llegada</label>
+                    <input type="date" id="check-in" required>
+                </div>
+                <div class="input-group">
+                    <label>Fecha de Salida</label>
+                    <input type="date" id="check-out" required>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Confirmar Reserva</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Pago -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 style="margin-bottom: 20px;">Completar <span class="gold">Pago</span></h2>
+            <div style="background: rgba(0,0,0,0.05); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                <p>Noches: <span id="payment-nights" class="gold" style="font-weight: bold;"></span></p>
+                <p>Total a pagar: <span id="payment-total" class="gold" style="font-weight: bold; font-size: 20px;"></span></p>
+            </div>
+            <form id="payment-form">
+                <input type="hidden" id="pay-room-id">
+                <input type="hidden" id="pay-client-name">
+                <input type="hidden" id="pay-check-in">
+                <input type="hidden" id="pay-check-out">
+                <input type="hidden" id="pay-total-amount">
+                
+                <div class="input-group">
+                    <label>Nombre en la tarjeta</label>
+                    <input type="text" id="card-name" placeholder="Ej. Juan Pérez" required>
+                </div>
+                <div class="input-group">
+                    <label>Número de Tarjeta</label>
+                    <input type="text" id="card-number" placeholder="Ej. 1234567890123456" maxlength="19" required>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <div class="input-group" style="flex: 1;">
+                        <label>Vencimiento</label>
+                        <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5" required>
+                    </div>
+                    <div class="input-group" style="flex: 1;">
+                        <label>CVV</label>
+                        <input type="password" id="card-cvv" placeholder="123" maxlength="4" required>
+                    </div>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%; background-color:#10b981; color:white;">Pagar y Confirmar Reserva</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/store.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
