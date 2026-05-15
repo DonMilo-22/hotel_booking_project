@@ -1,0 +1,138 @@
+.admin-login-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    background: var(--bg-card);
+    padding: 50px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.login-box h2 {
+    margin-bottom: 30px;
+}
+
+.error-text {
+    color: #ef4444;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.dashboard-container {
+    min-height: 100vh;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: var(--bg-card);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.logout-button {
+    background: transparent;
+    color: #ef4444;
+    border: 1px solid #ef4444;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logout-button:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.dashboard-content {
+    padding: 50px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 10px;
+    border-left: 4px solid var(--gold);
+}
+
+.stat-card h3 {
+    font-size: 16px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.tables-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 1000px) {
+    .tables-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+.table-container {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.table-container h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 15px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-table th {
+    color: #64748b;
+    font-weight: 600;
+}
+
+.admin-table tr:hover td {
+    background: rgba(0,0,0,0.03);
+}
+
+.back-link {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 14px;
+}
+.back-link:hover {
+    text-decoration: underline;
+}
